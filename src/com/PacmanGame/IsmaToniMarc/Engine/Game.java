@@ -9,11 +9,34 @@ import java.util.Scanner;
 
 public class Game {
 
+    /**
+     * Creació objecte mapa
+     */
     private Board board = new Board();
+
+    /**
+     * Creació objecte Pacman amb posicio X i Y definida per paràmetres
+     */
     private Pacman pacman = new Pacman(2, 5);
+
+    /**
+     * Creació objecte Ghost amb posicio X i Y definida per paràmetres
+     */
     private Ghost ghost1 = new Ghost(6,4);
+
+    /**
+     * Creació objecte Ghost amb posicio X i Y definida per paràmetres
+     */
     private Ghost ghost2 = new Ghost(6, 6);
+
+    /**
+     * Crear objecte Teclat, del tipus Scanner per poder llegir paràmetres d'entrada
+     */
     Scanner keyboard = new Scanner(System.in);
+
+    /**
+     * Boleà per definir quan acab el bucle de la partida
+     */
     private boolean playing = true;
 
     public static char triar;
@@ -23,8 +46,9 @@ public class Game {
     }
 
     /**
-     *
-     * @throws IOException
+     * Un bucle While que a dins tenim la opció de triar crear una partida nova o continuar la partida guardada
+     * A dins tenim metodes dels objectes board per poder llegir el mapa i mostra-lo
+     * @throws IOException per capturar algun error que hi hagi
      */
     private void startGameLoop() throws IOException {
         System.out.println("----------PACMAN----------");
@@ -52,6 +76,10 @@ public class Game {
         }
     }
 
+    /**
+     * Bucle principal per moure el pacman per el mapa, dins tenim mètodes
+     * @throws IOException
+     */
     public void mainLoop() throws IOException {
 
         do {

@@ -12,9 +12,16 @@ public abstract class Entity {
     }
 
     public void move(int x, int y, Board board) {
-
     }
 
+    /**
+     * Mètode que comprova que la posició on es desplaça el Pacman i els fantasmes son correctes
+     * comprovant que no hi hagi ni una paret ni els fantasemes
+     * @param x poscio X on es troba
+     * @param y posicio Y on es troba
+     * @param board tauler del joc
+     * @return
+     */
     public boolean checkValidPos(int x, int y, Board board) {
         if (board.getGameBoard()[x][y] == '#'
                 || board.getGameBoard()[x][y] == 'G'

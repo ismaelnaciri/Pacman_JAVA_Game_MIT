@@ -3,6 +3,10 @@ package com.PacmanGame.IsmaToniMarc.Classes;
 import com.PacmanGame.IsmaToniMarc.UI.Board;
 
 /**
+ * És una subclasse de Entity, que hereda valors com la x i la y.
+ * Té més atributs:
+ * Un contador de puntuació
+ * Un contador de vides
  *
  */
 public class Pacman extends Entity {
@@ -19,6 +23,15 @@ public class Pacman extends Entity {
         setY(1);
     }
 
+
+    /**
+     * És un metode que permet moure el Pacman per el tauler, primer comprovant que les direccions
+     * on volem anar siguin valides, després quan es mou el pacman deixa un espai en blan per on pasa.
+     * @param x Posició X on està ubicat el Pacman
+     * @param y Posició Y on està ubicat el Pacman
+     * @param board Cridem al objecte taular
+     * @param direction És el paràmetre que indica la direcció on es vol anar amb el Pacman
+     */
     public void move(int x, int y, Board board, char direction) {
         x = entityCurrentXPos(board, 'P');
         y = entityCurrentYPos(board, 'P');
@@ -94,9 +107,10 @@ public class Pacman extends Entity {
     }
 
     /**
-     * @param board
-     * @param player
-     * @return
+     * Mètode que retorna la posció X del valor char que li pasem com a entrada al mètode
+     * @param board agafa un objecte tauler que és un array bidimensional de 11 x 9
+     * @param player agafa el char que volem buscar al array, P = pacman, G i R = Fantasmes
+     * @return retorna la posició X que busquem del char
      */
     public int entityCurrentXPos(Board board, char player) {
         for (int i = 0; i < board.getGameBoard().length; i++) {
@@ -127,6 +141,9 @@ public class Pacman extends Entity {
         return 0;
     }
 
+    /**
+     * Mètode que mostra la puntuació de la partida, amb el mètode get de la variable PointCounter
+     */
     public void showCounter(){
         System.out.println("Puntuacio: "+ getPointCounter());
     }
