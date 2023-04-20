@@ -10,12 +10,13 @@ import java.util.Scanner;
 public class Game {
 
     private Board board = new Board();
-    private Pacman pacman = new Pacman(0, 0);
-    private Ghost ghost1 = new Ghost(10,7);
-    private Ghost ghost2 = new Ghost(13, 7);
-    private Ghost ghost3 = new Ghost(16, 7);
+    private Pacman pacman = new Pacman(2, 5);
+    private Ghost ghost1 = new Ghost(6,4);
+    private Ghost ghost2 = new Ghost(6, 6);
     Scanner keyboard = new Scanner(System.in);
     private boolean playing = true;
+
+    public static char triar;
 
     public Game() throws IOException {
         startGameLoop();
@@ -45,13 +46,16 @@ public class Game {
     }
 
     public void mainLoop() throws IOException {
-        char triar;
 
         do {
             System.out.print("Escull direcció A W S D  (Escriu H per guardar) ");
-            triar = keyboard.next().charAt(0);
+            triar = keyboard.next().toUpperCase().charAt(0);
 
             pacman.move(0, 0, board, triar);
+            ghost1.move(board, 'G');
+            ghost2.move(board, 'R');
+            board.printBoard();
+
 
             if (triar == 'H') {
                 board.writeFile("C:\\IdeaProjects\\Pacman_JAVA_Game_MIT\\src\\com\\PacmanGame\\IsmaToniMarc\\Files\\Maps\\ingame_map.txt");
@@ -101,11 +105,6 @@ public class Game {
         this.ghost2 = ghost2;
     }
 
-    public Ghost getGhost3() {
-        return ghost3;
-    }
-
-    public void setGhost3(Ghost ghost3) {
-        this.ghost3 = ghost3;
-    }
+    public char getTriar() { return triar; }
+    public void setTriar(char triar) { this.triar = triar; }
 }

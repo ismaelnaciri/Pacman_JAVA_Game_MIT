@@ -1,68 +1,97 @@
 package com.PacmanGame.IsmaToniMarc.Classes;
 
 import com.PacmanGame.IsmaToniMarc.UI.Board;
+import com.PacmanGame.IsmaToniMarc.Engine.Game;
 
-import java.util.Random;
 
-public class Ghost extends Entity{
+public class Ghost extends Entity {
 
     public Ghost(int x, int y) {
         super(x, y);
     }
 
-    @Override
-    public void move(int x, int y, Board board) {
-        Random randomMove = new Random();
 
-        switch (randomMove.nextInt(3)) {
-            case 0:
-                for (int i = 0; i < board.getGameBoard().length; i++) {
-                    for (int j = 0; j < board.getGameBoard()[i].length; j++) {
-                        //Move left
-                        if (board.getGameBoard()[x - 1][y] != '#' || board.getGameBoard()[x + 1][y] != 'G') {
-                            board.getGameBoard()[x - 1][y] = 'G';
-                            board.getGameBoard()[x][y] = ' ';
-                        }
-                    }
-                }
+    public void move(Board board, char ghost) {
+
+        int gPosX = entityCurrentXPos(board, ghost);
+        int gPosY = entityCurrentYPos(board, ghost);
+
+        int rPosX = entityCurrentXPos(board, ghost);
+        int rPosY = entityCurrentXPos(board, ghost);
+
+
+        switch (ghost) {
+            case 'G':
+                ghostMoves(gPosX, gPosY, ghost, board);
                 break;
-
-            case 1:
-                for (int i = 0; i < board.getGameBoard().length; i++) {
-                    for (int j = 0; j < board.getGameBoard()[i].length; j++) {
-                        //Move up
-                        if (board.getGameBoard()[x][y - 1] != '#' || board.getGameBoard()[x + 1][y] != 'G') {
-                            board.getGameBoard()[x][y - 1] = 'G';
-                            board.getGameBoard()[x][y] = ' ';
-                        }
-                    }
-                }
-                break;
-
-            case 2:
-                for (int i = 0; i < board.getGameBoard().length; i++) {
-                    for (int j = 0; j < board.getGameBoard()[i].length; j++) {
-                        //Move right
-                        if (board.getGameBoard()[x + 1][y] != '#' || board.getGameBoard()[x + 1][y] != 'G') {
-                            board.getGameBoard()[x + 1][y] = 'G';
-                            board.getGameBoard()[x][y] = ' ';
-                        }
-                    }
-                }
-
-            case 3:
-                for (int i = 0; i < board.getGameBoard().length; i++) {
-                    for (int j = 0; j < board.getGameBoard()[i].length; j++) {
-                        //Move down
-                        if (board.getGameBoard()[x][y + 1] != '#' || board.getGameBoard()[x][y + 1] != 'G') {
-                            board.getGameBoard()[x][y + 1] = 'G';
-                            board.getGameBoard()[x][y] = ' ';
-                        }
-                    }
-                }
+            case 'R':
+                ghostMoves(rPosX, rPosY, ghost, board);
                 break;
         }
-
-
     }
+
+    public void ghostMoves(int x, int y, char ghost, Board board) {
+        for (int i = 0; i < board.getGameBoard().length; i++) {
+            for (int j = 0; j < board.getGameBoard()[i].length; j++) {
+                if (Game.triar == 'A') {
+                    //Move left
+                    if (checkValidPos(x, y, board)) {
+                        board.getGameBoard()[x][y - 1] = ghost;
+                        board.getGameBoard()[x][y] = ' ';
+                        break;
+                    }
+                }
+                if (Game.triar == 'D') {
+                    //Move right
+                    if (checkValidPos(x, y, board)) {
+                        board.getGameBoard()[x][y + 1] = ghost;
+                        board.getGameBoard()[x][y] = ' ';
+                        break;
+                    }
+                }
+                if (Game.triar == 'W') {
+                    //Move up
+                    if (checkValidPos(x, y, board)) {
+                        board.getGameBoard()[x - 1][y] = ghost;
+                        board.getGameBoard()[x][y] = ' ';
+                        break;
+                    }
+                }
+                if (Game.triar == 'S') {
+                    //Move down
+                    if (checkValidPos(x, y, board)) {
+                        board.getGameBoard()[x][y + 1] = ghost;
+                        board.getGameBoard()[x][y] = ' ';
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    //Get B Pos x
+    public int entityCurrentXPos(Board board, char player) {
+        for (int i = 0; i < board.getGameBoard().length; i++) {
+            for (int j = 0; j < board.getGameBoard()[i].length; j++) {
+                if (board.getGameBoard()[i][j] == player) {
+                    return i;
+                }
+            }
+        }
+        return 0;
+    }
+
+    //Get B Pos Y
+    public int entityCurrentYPos(Board board, char player) {
+        for (int i = 0; i < board.getGameBoard().length; i++) {
+            for (int j = 0; j < board.getGameBoard()[i].length; j++) {
+                if (board.getGameBoard()[i][j] == player) {
+                    return j;
+                }
+            }
+        }
+        return 0;
+    }
+
+
 }
