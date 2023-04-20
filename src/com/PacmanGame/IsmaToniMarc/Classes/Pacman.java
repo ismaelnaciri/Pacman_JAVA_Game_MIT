@@ -2,6 +2,9 @@ package com.PacmanGame.IsmaToniMarc.Classes;
 
 import com.PacmanGame.IsmaToniMarc.UI.Board;
 
+/**
+ *
+ */
 public class Pacman extends Entity {
 
     private int lifes = 2;
@@ -26,6 +29,7 @@ public class Pacman extends Entity {
                 if (checkValidPos(x, y - 1, board)) {
                     if (board.getGameBoard()[x][y - 1] == '·')
                         pointCounter++;
+
                     board.getGameBoard()[x][y - 1] = 'P';
                     board.getGameBoard()[x][y] = ' ';
 
@@ -81,6 +85,7 @@ public class Pacman extends Entity {
         return 0;
     }
 
+ 
     public int entityCurrentYPos(Board board, char player) {
         for (int i = 0; i < board.getGameBoard().length; i++) {
             for (int j = 0; j < board.getGameBoard()[i].length; j++) {

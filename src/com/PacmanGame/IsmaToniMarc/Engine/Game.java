@@ -55,6 +55,9 @@ public class Game {
             System.out.print("Escull direcció A W S D  (Escriu H per guardar) ");
             triar = keyboard.next().toUpperCase().charAt(0);
 
+            if (board.checkIfWon())
+                System.out.println("        YOU HAVE WON!!!!!!!     ");
+
             pacman.showCounter();
 
             pacman.move(0, 0, board, triar);
