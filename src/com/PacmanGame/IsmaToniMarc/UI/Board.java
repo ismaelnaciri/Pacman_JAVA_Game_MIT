@@ -57,7 +57,6 @@ public class Board {
     }
 
 
-
     public void setGameBoard(char[][] gameBoard) {
         this.gameBoard = gameBoard;
     }

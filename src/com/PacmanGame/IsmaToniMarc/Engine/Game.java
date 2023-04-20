@@ -17,6 +17,8 @@ public class Game {
     Scanner keyboard = new Scanner(System.in);
     private boolean playing = true;
 
+    public static char triar;
+
     public Game() throws IOException {
         startGameLoop();
     }
@@ -45,13 +47,17 @@ public class Game {
     }
 
     public void mainLoop() throws IOException {
-        char triar;
 
         do {
             System.out.print("Escull direcció A W S D  (Escriu H per guardar) ");
-            triar = keyboard.next().charAt(0);
+            triar = keyboard.next().toUpperCase().charAt(0);
 
             pacman.move(0, 0, board, triar);
+            ghost1.move(board, 'G');
+            ghost2.move(board, 'R');
+            ghost3.move(board, 'B');
+            board.printBoard();
+
 
             if (triar == 'H') {
                 board.writeFile("C:\\IdeaProjects\\Pacman_JAVA_Game_MIT\\src\\com\\PacmanGame\\IsmaToniMarc\\Files\\Maps\\ingame_map.txt");
@@ -108,4 +114,7 @@ public class Game {
     public void setGhost3(Ghost ghost3) {
         this.ghost3 = ghost3;
     }
+
+    public char getTriar() { return triar; }
+    public void setTriar(char triar) { this.triar = triar; }
 }
