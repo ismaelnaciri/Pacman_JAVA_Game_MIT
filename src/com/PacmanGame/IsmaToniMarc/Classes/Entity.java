@@ -23,27 +23,21 @@ public abstract class Entity {
         return true;
     }
 
-    public int entityCurrentXPos(Board board, char player) {
-        for (int i = 0; i < board.getGameBoard().length; i++) {
-            for (int j = 0; j < board.getGameBoard()[i].length; j++) {
-                if (board.getGameBoard()[i][j] == player) {
-                    return i;
-                }
-            }
-        }
-        return 0;
-    }
+    /**
+     * Mètode abstracte que les subclses Pacman i Ghost haurà de tenir obligatoriamnet, per trobar la X d'aquests
+     * @param board Tauler on es busca la posició X del Char
+     * @param player Char del que busquem la X
+     * @return retorna la posició X del Char
+     */
+    public abstract int entityCurrentXPos(Board board, char player);
 
-    public int entityCurrentYPos(Board board, char player) {
-        for (int i = 0; i < board.getGameBoard().length; i++) {
-            for (int j = 0; j < board.getGameBoard()[i].length; j++) {
-                if (board.getGameBoard()[i][j] == player) {
-                    return i;
-                }
-            }
-        }
-        return 0;
-    }
+    /**
+     * Mètode abstracte que les subclses Pacman i Ghost haurà de tenir obligatoriamnet, per trobar la Y d'aquests
+     * @param board Tauler on es busca la posició Y del Char
+     * @param player Char del que busquem la Y
+     * @return retorna la posició Y del Char
+     */
+    public abstract int entityCurrentYPos(Board board, char player);
 
 
     public void setY(int y) {

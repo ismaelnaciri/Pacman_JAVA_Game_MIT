@@ -6,7 +6,7 @@ import java.io.*;
 
 public class Board {
     private char[][] gameBoard = new char[Constants.gameBoardHeight][Constants.gameBoardWidth];
-    private int pointsLeft = 38;
+    private int totalPoints = 0;
 
     public void readFile(String fileName) throws IOException {
 
@@ -56,8 +56,16 @@ public class Board {
         }
     }
 
-    public boolean checkIfWon() {
-        return pointsLeft == 0;
+    /**
+     *
+     */
+    public void putTotalPoints() {
+        for (int i = 0; i < gameBoard.length; i++) {
+            for (int j = 0; j < gameBoard[i].length; j++) {
+                if (gameBoard[i][j] == '·')
+                    totalPoints++;
+            }
+        }
     }
 
 
@@ -69,11 +77,8 @@ public class Board {
         return gameBoard;
     }
 
-    public int getPointsLeft() {
-        return pointsLeft;
+    public int getTotalPoints() {
+        return totalPoints;
     }
 
-    public void setPointsLeft(int pointsLeft) {
-        this.pointsLeft = pointsLeft;
-    }
 }

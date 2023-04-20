@@ -87,6 +87,4 @@ public class Ghost extends Entity {
         }
         return 0;
     }
-
-
 }

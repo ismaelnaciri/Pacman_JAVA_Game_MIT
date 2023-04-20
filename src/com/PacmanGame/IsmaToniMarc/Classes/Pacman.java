@@ -25,11 +25,16 @@ public class Pacman extends Entity {
 
         switch (direction) {
             case 'A':
+                if (board.getGameBoard()[x][y - 1] == 'G' ||
+                        board.getGameBoard()[x][y - 1] == 'R') {
+                    System.out.println("HAS MORT!!!!");
+                    System.exit(1011010);
+                }
                 //Move left
                 if (checkValidPos(x, y - 1, board)) {
-                    if (board.getGameBoard()[x][y - 1] == '·')
+                    if (board.getGameBoard()[x][y - 1] == '·') {
                         pointCounter++;
-
+                    }
                     board.getGameBoard()[x][y - 1] = 'P';
                     board.getGameBoard()[x][y] = ' ';
 
@@ -37,20 +42,33 @@ public class Pacman extends Entity {
                 break;
 
             case 'D':
+                if (board.getGameBoard()[x][y + 1] == 'G' ||
+                        board.getGameBoard()[x][y + 1] == 'R') {
+                    System.out.println("HAS MORT!!!!");
+                    System.exit(1011010);
+                }
                 //Move right
                 if (checkValidPos(x, y + 1, board)) {
-                    if (board.getGameBoard()[x][y + 1] == '·')
+                    if (board.getGameBoard()[x][y + 1] == '·') {
                         pointCounter++;
+                    }
                     board.getGameBoard()[x][y + 1] = 'P';
                     board.getGameBoard()[x][y] = ' ';
                 }
                 break;
 
             case 'W':
+                if (board.getGameBoard()[x - 1][y] == 'G' ||
+                    board.getGameBoard()[x - 1][y] == 'R') {
+                    System.out.println("HAS MORT!!!!");
+                    System.exit(1011010);
+                }
                 //Move up
                 if (checkValidPos(x - 1, y, board)) {
-                    if (board.getGameBoard()[x -1][y] == '·')
+                    if (board.getGameBoard()[x -1][y] == '·') {
                         pointCounter++;
+                    }
+
                     board.getGameBoard()[x - 1][y] = 'P';
                     board.getGameBoard()[x][y] = ' ';
 
@@ -58,10 +76,16 @@ public class Pacman extends Entity {
                 break;
 
                 case 'S':
+                    if (board.getGameBoard()[x + 1][y] == 'G' ||
+                        board.getGameBoard()[x + 1][y] == 'R') {
+                        System.out.println("HAS MORT!!!!");
+                        System.exit(1011010);
+                    }
                     //Move DOWN
                     if (checkValidPos(x + 1, y, board)) {
                         if (board.getGameBoard()[x +1][y] == '·')
                             pointCounter++;
+
                         board.getGameBoard()[x + 1][y] = 'P';
                         board.getGameBoard()[x][y] = ' ';
                 }
@@ -85,7 +109,13 @@ public class Pacman extends Entity {
         return 0;
     }
 
- 
+
+    /**
+     * Mètode que retorna la posció Y del valor char que li pasem com a entrada al mètode
+     * @param board agafa un objecte tauler que és un array bidimensional de 11 x 9
+     * @param player agafa el char que volem buscar al array, P = pacman, G i R = Fantasmes
+     * @return retorna la posició Y que busquem del char
+     */
     public int entityCurrentYPos(Board board, char player) {
         for (int i = 0; i < board.getGameBoard().length; i++) {
             for (int j = 0; j < board.getGameBoard()[i].length; j++) {

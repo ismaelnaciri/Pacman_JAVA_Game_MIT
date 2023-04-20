@@ -37,12 +37,15 @@ public class Game {
             if (choice == 1) {
                 board.readFile("C:\\IdeaProjects\\Pacman_JAVA_Game_MIT\\src\\com\\PacmanGame\\IsmaToniMarc\\Files\\Maps\\full_pacman_map.txt");
                 board.printBoard();
+                board.putTotalPoints();
                 mainLoop();
                 setPlaying(false);
             }
             else if (choice == 2) {
                 board.readFile("C:\\IdeaProjects\\Pacman_JAVA_Game_MIT\\src\\com\\PacmanGame\\IsmaToniMarc\\Files\\Maps\\ingame_map.txt");
                 board.printBoard();
+                board.putTotalPoints();
+                System.out.println("test: " + board.getTotalPoints());
                 mainLoop();
                 setPlaying(false);
             }
@@ -55,11 +58,7 @@ public class Game {
             System.out.print("Escull direcció A W S D  (Escriu H per guardar) ");
             triar = keyboard.next().toUpperCase().charAt(0);
 
-            if (board.checkIfWon())
-                System.out.println("        YOU HAVE WON!!!!!!!     ");
-
             pacman.showCounter();
-
             pacman.move(0, 0, board, triar);
             ghost1.move(board, 'G');
             ghost2.move(board, 'R');
@@ -70,7 +69,7 @@ public class Game {
                 board.writeFile("C:\\IdeaProjects\\Pacman_JAVA_Game_MIT\\src\\com\\PacmanGame\\IsmaToniMarc\\Files\\Maps\\ingame_map.txt");
             }
 
-        }while (triar != 'X');
+        }while (pacman.getLifes() > 0 && board.getTotalPoints() > 0);
     }
 
 
