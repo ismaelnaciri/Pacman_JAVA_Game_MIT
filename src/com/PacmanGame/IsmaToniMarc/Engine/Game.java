@@ -55,6 +55,8 @@ public class Game {
             System.out.print("Escull direcció A W S D  (Escriu H per guardar) ");
             triar = keyboard.next().toUpperCase().charAt(0);
 
+            pacman.showCounter();
+
             pacman.move(0, 0, board, triar);
             ghost1.move(board, 'G');
             ghost2.move(board, 'R');

@@ -22,6 +22,7 @@ public abstract class Entity {
             return false;
         return true;
     }
+
     public int entityCurrentXPos(Board board, char player) {
         for (int i = 0; i < board.getGameBoard().length; i++) {
             for (int j = 0; j < board.getGameBoard()[i].length; j++) {

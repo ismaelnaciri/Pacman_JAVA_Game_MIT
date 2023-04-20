@@ -92,6 +92,10 @@ public class Pacman extends Entity {
         return 0;
     }
 
+    public void showCounter(){
+        System.out.println("Puntuacio: "+ getPointCounter());
+    }
+
 
     public int getLifes() {
         return lifes;
