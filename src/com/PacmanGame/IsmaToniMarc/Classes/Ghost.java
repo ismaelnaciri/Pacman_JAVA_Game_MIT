@@ -17,7 +17,7 @@ public class Ghost extends Entity {
         int gPosY = entityCurrentYPos(board, ghost);
 
         int rPosX = entityCurrentXPos(board, ghost);
-        int rPosY = entityCurrentXPos(board, ghost);
+        int rPosY = entityCurrentYPos(board, ghost);
 
 
         switch (ghost) {
