@@ -3,7 +3,6 @@ package com.PacmanGame.IsmaToniMarc.UI;
 import com.PacmanGame.IsmaToniMarc.Engine.Constants;
 
 import java.io.*;
-import java.nio.file.NoSuchFileException;
 
 public class Board {
     private char[][] gameBoard = new char[Constants.gameBoardHeight][Constants.gameBoardWidth];
@@ -55,6 +54,15 @@ public class Board {
             System.out.println();
         }
     }
+
+//    public boolean win() {
+//        for (int i = 0; i < gameBoard.length; i++) {
+//            for (int j = 0; j < gameBoard[i].length; j++) {
+//                if (gameBoard[i][j] == '·')
+//                    return false;
+//            }
+//        }
+//    }
 
 
 

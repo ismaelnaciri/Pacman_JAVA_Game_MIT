@@ -4,13 +4,11 @@ import com.PacmanGame.IsmaToniMarc.UI.Board;
 
 public class Pacman extends Entity {
 
-    private int x;
-    private int y;
-
-    private int lifes;
+    private int lifes = 2;
 
     private boolean left, up, right, down;
     private char[][] pacmanPos;
+    private int pointCounter = 1;
 
     public Pacman(int x, int y) {
         super(x, y);
@@ -24,59 +22,54 @@ public class Pacman extends Entity {
 
         switch (direction) {
             case 'A':
-                for (int i = 0; i < board.getGameBoard().length; i++) {
-                    for (int j = 0; j < board.getGameBoard()[i].length; j++) {
-                        //Move left
-                        if (checkValidPos(x, y, board)) {
-                            board.getGameBoard()[x][y - 1] = 'P';
-                            board.getGameBoard()[x][y] = ' ';
-                            break;
-                        }
-                    }
+                //Move left
+                if (checkValidPos(x, y - 1, board)) {
+                    if (board.getGameBoard()[x][y - 1] == '·')
+                        pointCounter++;
+                    board.getGameBoard()[x][y - 1] = 'P';
+                    board.getGameBoard()[x][y] = ' ';
+
                 }
                 break;
 
             case 'D':
-                for (int i = 0; i < board.getGameBoard().length; i++) {
-                    for (int j = 0; j < board.getGameBoard()[i].length; j++) {
-                        //Move right
-                        if (checkValidPos(x, y, board)) {
-                            board.getGameBoard()[x][y + 1] = 'P';
-                            board.getGameBoard()[x][y] = ' ';
-                            break;
-                        }
-                    }
+                //Move right
+                if (checkValidPos(x, y + 1, board)) {
+                    if (board.getGameBoard()[x][y + 1] == '·')
+                        pointCounter++;
+                    board.getGameBoard()[x][y + 1] = 'P';
+                    board.getGameBoard()[x][y] = ' ';
                 }
                 break;
 
             case 'W':
-                for (int i = 0; i < board.getGameBoard().length; i++) {
-                    for (int j = 0; j < board.getGameBoard()[i].length; j++) {
-                        //Move up
-                        if (checkValidPos(x, y, board)) {
-                            board.getGameBoard()[x - 1][y] = 'P';
-                            board.getGameBoard()[x][y] = ' ';
-                            break;
-                        }
-                    }
+                //Move up
+                if (checkValidPos(x - 1, y, board)) {
+                    if (board.getGameBoard()[x -1][y] == '·')
+                        pointCounter++;
+                    board.getGameBoard()[x - 1][y] = 'P';
+                    board.getGameBoard()[x][y] = ' ';
+
                 }
                 break;
 
                 case 'S':
-                for (int i = 0; i < board.getGameBoard().length; i++) {
-                    for (int j = 0; j < board.getGameBoard()[i].length; j++) {
-                        //Move DOWN
-                        if (checkValidPos(x, y, board)) {
-                            board.getGameBoard()[x + 1][y] = 'P';
-                            board.getGameBoard()[x][y] = ' ';
-                            break;
-                        }
-                    }
+                    //Move DOWN
+                    if (checkValidPos(x + 1, y, board)) {
+                        if (board.getGameBoard()[x +1][y] == '·')
+                            pointCounter++;
+                        board.getGameBoard()[x + 1][y] = 'P';
+                        board.getGameBoard()[x][y] = ' ';
                 }
                 break;
         }
     }
 
+    /**
+     * @param board
+     * @param player
+     * @return
+     */
     public int entityCurrentXPos(Board board, char player) {
         for (int i = 0; i < board.getGameBoard().length; i++) {
             for (int j = 0; j < board.getGameBoard()[i].length; j++) {
@@ -108,14 +101,6 @@ public class Pacman extends Entity {
         this.lifes = lifes;
     }
 
-    public void updateXPos(int x, int y) {
-
-    }
-
-    public void updateYPos(int x, int y) {
-
-    }
-
 
     public char[][] getPacmanPos() {
         return pacmanPos;
@@ -123,5 +108,13 @@ public class Pacman extends Entity {
 
     public void setPacmanPos(char[][] pacmanPos) {
         this.pacmanPos = pacmanPos;
+    }
+
+    public int getPointCounter() {
+        return pointCounter;
+    }
+
+    public void setPointCounter(int pointCounter) {
+        this.pointCounter = pointCounter;
     }
 }

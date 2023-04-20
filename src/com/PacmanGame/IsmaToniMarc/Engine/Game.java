@@ -22,6 +22,10 @@ public class Game {
         startGameLoop();
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     private void startGameLoop() throws IOException {
         System.out.println("----------PACMAN----------");
         System.out.println("Començar partida nova (1) o continuar partida guardada (2)?");

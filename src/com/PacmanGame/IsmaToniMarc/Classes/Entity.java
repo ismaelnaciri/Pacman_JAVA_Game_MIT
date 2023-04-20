@@ -16,26 +16,11 @@ public abstract class Entity {
     }
 
     public boolean checkValidPos(int x, int y, Board board) {
-        if (board.getGameBoard()[x - 1][y] != '#')
-            if (board.getGameBoard()[x - 1][y] != 'G')
-                if(board.getGameBoard()[x - 1][y] != 'R')
-                    return true;
-
-        if (board.getGameBoard()[x + 1][y] != '#')
-            if(board.getGameBoard()[x + 1][y] != 'G')
-                if(board.getGameBoard()[x + 1][y] != 'R')
-                    return true;
-
-        if (board.getGameBoard()[x][y - 1] != '#')
-            if(board.getGameBoard()[x][y - 1] != 'G')
-                if(board.getGameBoard()[x][y - 1] != 'R')
-                    return true;
-
-        if (board.getGameBoard()[x][y + 1] != '#')
-            if(board.getGameBoard()[x][y + 1] != 'G')
-                if(board.getGameBoard()[x][y + 1] != 'R')
-                    return true;
-        return false;
+        if (board.getGameBoard()[x][y] == '#'
+                || board.getGameBoard()[x][y] == 'G'
+                || board.getGameBoard()[x][y] == 'R')
+            return false;
+        return true;
     }
     public int entityCurrentXPos(Board board, char player) {
         for (int i = 0; i < board.getGameBoard().length; i++) {

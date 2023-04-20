@@ -31,43 +31,38 @@ public class Ghost extends Entity {
     }
 
     public void ghostMoves(int x, int y, char ghost, Board board) {
-        for (int i = 0; i < board.getGameBoard().length; i++) {
-            for (int j = 0; j < board.getGameBoard()[i].length; j++) {
-                if (Game.triar == 'A') {
-                    //Move left
-                    if (checkValidPos(x, y, board)) {
-                        board.getGameBoard()[x][y - 1] = ghost;
-                        board.getGameBoard()[x][y] = ' ';
-                        break;
-                    }
-                }
-                if (Game.triar == 'D') {
-                    //Move right
-                    if (checkValidPos(x, y, board)) {
-                        board.getGameBoard()[x][y + 1] = ghost;
-                        board.getGameBoard()[x][y] = ' ';
-                        break;
-                    }
-                }
-                if (Game.triar == 'W') {
-                    //Move up
-                    if (checkValidPos(x, y, board)) {
-                        board.getGameBoard()[x - 1][y] = ghost;
-                        board.getGameBoard()[x][y] = ' ';
-                        break;
-                    }
-                }
-                if (Game.triar == 'S') {
-                    //Move down
-                    if (checkValidPos(x, y, board)) {
-                        board.getGameBoard()[x][y + 1] = ghost;
-                        board.getGameBoard()[x][y] = ' ';
-                        break;
-                    }
-                }
+        if (Game.triar == 'A') {
+            //Move left
+            if (checkValidPos(x, y - 1, board)) {
+                board.getGameBoard()[x][y - 1] = ghost;
+                board.getGameBoard()[x][y] = ' ';
+            }
+        }
+        if (Game.triar == 'D') {
+            //Move right
+            if (checkValidPos(x, y + 1, board)) {
+                board.getGameBoard()[x][y + 1] = ghost;
+                board.getGameBoard()[x][y] = ' ';
+            }
+        }
+
+        if (Game.triar == 'W') {
+            //Move up
+            if (checkValidPos(x - 1, y, board)) {
+                board.getGameBoard()[x - 1][y] = ghost;
+                board.getGameBoard()[x][y] = ' ';
+            }
+        }
+
+        if (Game.triar == 'S') {
+            //Move down
+            if (checkValidPos(x + 1, y, board)) {
+                board.getGameBoard()[x + 1][y] = ghost;
+                board.getGameBoard()[x][y] = ' ';
             }
         }
     }
+
 
     //Get B Pos x
     public int entityCurrentXPos(Board board, char player) {
