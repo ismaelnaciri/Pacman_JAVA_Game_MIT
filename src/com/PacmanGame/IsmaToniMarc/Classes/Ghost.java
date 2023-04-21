@@ -3,6 +3,8 @@ package com.PacmanGame.IsmaToniMarc.Classes;
 import com.PacmanGame.IsmaToniMarc.UI.Board;
 import com.PacmanGame.IsmaToniMarc.Engine.Game;
 
+import java.util.Random;
+
 
 public class Ghost extends Entity {
 
@@ -10,7 +12,11 @@ public class Ghost extends Entity {
         super(x, y);
     }
 
-
+    /**
+     * Creació de la classe random per poder fer els moviments dels fantasmes aleatoris
+     */
+    private Random randomG = new Random(System.currentTimeMillis());
+    private Random randomR = new Random(System.currentTimeMillis());
     public void move(Board board, char ghost) {
 
         int gPosX = entityCurrentXPos(board, ghost);
@@ -19,26 +25,28 @@ public class Ghost extends Entity {
         int rPosX = entityCurrentXPos(board, ghost);
         int rPosY = entityCurrentYPos(board, ghost);
 
+        int tempG = randomG.nextInt(4);
+        int tempR = randomR.nextInt(4);
 
         switch (ghost) {
             case 'G':
-                ghostMoves(gPosX, gPosY, ghost, board);
+                ghostMoves(gPosX, gPosY, ghost, board, tempG);
                 break;
             case 'R':
-                ghostMoves(rPosX, rPosY, ghost, board);
+                ghostMoves(rPosX, rPosY, ghost, board, tempR);
                 break;
         }
     }
 
-    public void ghostMoves(int x, int y, char ghost, Board board) {
-        if (Game.triar == 'A') {
+    public void ghostMoves(int x, int y, char ghost, Board board, int move) {
+        if (move == 0) {
             //Move left
             if (checkValidPos(x, y - 1, board)) {
                 board.getGameBoard()[x][y - 1] = ghost;
                 board.getGameBoard()[x][y] = ' ';
             }
         }
-        if (Game.triar == 'D') {
+        if (move == 2) {
             //Move right
             if (checkValidPos(x, y + 1, board)) {
                 board.getGameBoard()[x][y + 1] = ghost;
@@ -46,7 +54,7 @@ public class Ghost extends Entity {
             }
         }
 
-        if (Game.triar == 'W') {
+        if (move == 1) {
             //Move up
             if (checkValidPos(x - 1, y, board)) {
                 board.getGameBoard()[x - 1][y] = ghost;
@@ -54,7 +62,7 @@ public class Ghost extends Entity {
             }
         }
 
-        if (Game.triar == 'S') {
+        if (move == 3) {
             //Move down
             if (checkValidPos(x + 1, y, board)) {
                 board.getGameBoard()[x + 1][y] = ghost;
