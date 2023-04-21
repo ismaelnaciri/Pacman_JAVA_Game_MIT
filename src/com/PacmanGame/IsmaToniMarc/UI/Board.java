@@ -10,7 +10,7 @@ import java.io.*;
  * Atribut que a mesura que el pacman es menja una '.' augmenta
  */
 public class Board {
-    private char[][] gameBoard = new char[Constants.gameBoardHeight][Constants.gameBoardWidth];
+    private char[][] gameBoard = new char[Constants.GAME_BOARD_HEIGHT][Constants.GAME_BOARD_WIDTH];
     private int totalPoints = 0;
 
     /**

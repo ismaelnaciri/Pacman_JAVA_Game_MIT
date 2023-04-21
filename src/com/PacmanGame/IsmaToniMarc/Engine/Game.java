@@ -51,7 +51,7 @@ public class Game {
      * @throws IOException per capturar algun error que hi hagi
      */
     private void startGameLoop() throws IOException {
-        System.out.println("----------PACMAN----------");
+        System.out.println("--------------------PACMAN--------------------");
         System.out.println("Començar partida nova (1) o continuar partida guardada (2)?");
 
         while (isPlaying()) {
@@ -62,6 +62,7 @@ public class Game {
                 board.readFile("C:\\IdeaProjects\\Pacman_JAVA_Game_MIT\\src\\com\\PacmanGame\\IsmaToniMarc\\Files\\Maps\\full_pacman_map.txt");
                 board.printBoard();
                 board.putTotalPoints();
+                Constants.emptyLine();
                 mainLoop();
                 setPlaying(false);
             }
@@ -69,7 +70,7 @@ public class Game {
                 board.readFile("C:\\IdeaProjects\\Pacman_JAVA_Game_MIT\\src\\com\\PacmanGame\\IsmaToniMarc\\Files\\Maps\\ingame_map.txt");
                 board.printBoard();
                 board.putTotalPoints();
-                System.out.println("test: " + board.getTotalPoints());
+                System.out.println("Puntuació: " + board.getTotalPoints());
                 mainLoop();
                 setPlaying(false);
             }
@@ -86,11 +87,14 @@ public class Game {
             System.out.print("Escull direcció A W S D  (Escriu H per guardar) ");
             triar = keyboard.next().toUpperCase().charAt(0);
 
+            Constants.emptyLine();
             pacman.showCounter();
+            Constants.emptyLine();
             pacman.move(0, 0, board, triar);
             ghost1.move(board, 'G');
             ghost2.move(board, 'R');
             board.printBoard();
+            Constants.emptyLine();
 
 
             if (triar == 'H') {
