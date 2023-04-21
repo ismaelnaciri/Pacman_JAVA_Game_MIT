@@ -72,6 +72,12 @@ public class Ghost extends Entity {
     }
 
 
+    /**
+     * Mètode per torbar la X del fantasma dins de l'array
+     * @param board  Tauler on es busca la posició X del Char
+     * @param player Char del fantasma que busquem la X
+     * @return retorna la posicio X del fantasma
+     */
     //Get B Pos x
     public int entityCurrentXPos(Board board, char player) {
         for (int i = 0; i < board.getGameBoard().length; i++) {
@@ -84,6 +90,12 @@ public class Ghost extends Entity {
         return 0;
     }
 
+    /**
+     * Mètode per torbar la Y del fantasma dins de l'array
+     * @param board  Tauler on es busca la posició Y del Char
+     * @param player Char del fantasma que busquem la Y
+     * @return retorna la posicio Y del fantasma
+     */
     //Get B Pos Y
     public int entityCurrentYPos(Board board, char player) {
         for (int i = 0; i < board.getGameBoard().length; i++) {
