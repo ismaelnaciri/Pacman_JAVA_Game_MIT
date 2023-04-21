@@ -11,7 +11,6 @@ import java.io.*;
  */
 public class Board {
     private char[][] gameBoard = new char[Constants.gameBoardHeight][Constants.gameBoardWidth];
-    private char[][] easterBoard = new char[Constants.easterHeight][Constants.easterWidth];
     private int totalPoints = 0;
 
     /**

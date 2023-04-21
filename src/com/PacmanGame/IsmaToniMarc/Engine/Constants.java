@@ -9,6 +9,4 @@ public class Constants {
     public static final int gameBoardWidth = 9;
     public static final int gameBoardHeight = 11;
 
-    public static final int easterWidth = 48;
-    public static final int easterHeight = 11;
 }
